@@ -9,11 +9,11 @@ int main()
     cout << "x            y\n";
     for (x = (-4); x <= 4; x += 0.5) {
         if (x == 1) {
-            cout << x << "            Неопределено\n";
+            cout << x << "\tНеопределено\n";
         }
         else {
             double y = (pow(x, 2) - 2 * x + 2) / (x - 1);
-            cout << x << "            " << y << "\n";
+            cout << x << "\t" << y << "\n";
         }
     }
 }
