@@ -7,8 +7,13 @@ int main()
     int x;
     cout << "Введите число: ";
     cin >> x;
-    for (int i = 1; i <= 10; i++) {
-        cout << x << "\n";
-        x = x + 1;
+    if (x >= 1) {
+        for (int i = 1; i <= 10; i++) {
+            cout << x << "\n";
+            x = x + 1;
+        }
+    }
+    else {
+        cout << "Вы ввели ненатуральное число.";
     }
 }

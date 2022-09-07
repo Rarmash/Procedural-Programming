@@ -12,6 +12,11 @@ int main()
     cin >> y;
     cout << "Введите B: ";
     cin >> b;
-    float z = log(b - y) * sqrt(b - x);
-    cout << z;
+    if (b >= y && b >= x) {
+        float z = log(b - y) * sqrt(b - x);
+        cout << z;
+    }
+    else {
+        cout << "Значение функции не определено.";
+    }
 }
