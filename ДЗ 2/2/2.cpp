@@ -10,7 +10,10 @@ int main()
     cin >> x;
     cout << "Введите A: ";
     cin >> a;
-    if (abs(x) < 1) {
+    if (a < pow(x, 2) || abs(x) == 0) {
+        cout << "Неопределено";
+    }
+    else if (abs(x) < 1) {
         float w = a * log(abs(x));
         cout << w;
     }
