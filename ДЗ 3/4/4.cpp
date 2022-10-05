@@ -1,24 +1,57 @@
 ﻿#include <iostream>
 #include <fstream>
+#include <cmath>
 #include <string>
-using namespace std;
+#include <vector>
 
+using namespace std;
 int main()
 {
-    ofstream File("4.txt");
-    File << "eer32r3wr32r23r23r32rhu7i3r83hi383h3eihfh738rh38idf3h83nid3eh8ifu4hr38r3";
-    File.close();
-    string TextFile;
-    ifstream NewFile("4.txt");
-    string str;
-    while (getline(NewFile, TextFile)) {
-        str = TextFile;
+    setlocale(LC_ALL, "Russian");
+    string z;
+    float x, y, A, H, R;
+    //ofstream fin("4.txt");
+    //fin << "я ничего25    не 10понимаю 2599в плюсах!\n";
+    //fin.close();
+    ifstream fout("4.txt");
+    string fil, Textfile;
+    while (getline(fout, Textfile))
+    {
+        fil = fil + "|" + Textfile;
     }
-    int sizee = str.size();
-    for (int i = 0; i < sizee; i++) {
-        if (isdigit(str[i])) {
-            cout << str[i];
+    fout.close();
+    int siize = fil.size(), i = 0;
+    bool fs = true;
+    bool Befwasnotdig = false;
+    for (i; i < siize; i++)
+    {
+        if (isdigit(fil[i]))
+        {
+            cout << fil[i];
+            Befwasnotdig = true;
+            fs = false;
+        }
+        else
+        {
+            if (fil[i] == ' ' && Befwasnotdig && not fs)
+            {
+                cout << " ";
+                Befwasnotdig = false;
+                fs = false;
+            }
+            else
+            {
+                fs = false;
+                if (Befwasnotdig)
+                {
+                    cout << " ";
+                    Befwasnotdig = false;
+                }
+            }
+        }
+        if (fil[i] == '|')
+        {
+            cout << "\n";
         }
     }
-    NewFile.close();
 }
