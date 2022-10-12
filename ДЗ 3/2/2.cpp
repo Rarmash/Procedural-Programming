@@ -4,12 +4,13 @@
 using namespace std;
 
 int main() {
+	setlocale(0, "");
 	double S, p, n, m;
-	cout << "Enter S, m, n: ";
+	cout << "Введите переменные S, m, n: ";
 	cin >> S >> m >> n;
 	if (S < 0 || n < 0)
 	{
-		cout << "Error!\n";
+		cout << "Ошибка!" << endl;
 	}
 	else
 	{
@@ -24,18 +25,18 @@ int main() {
 
 		if (p > 0.1)
 		{
-			cout << "Percent: " << p - 0.01;
+			cout << "Процент: " << p - 0.01;
 		}
 		else
 		{
 			if (p < -0.0001)
 			{
 
-				cout << "Percent: " << p;
+				cout << "Процент: " << p;
 			}
 			else
 			{
-				cout << "Percent: " << floor(p);
+				cout << "Процент: " << floor(p);
 			}
 		}
 	}

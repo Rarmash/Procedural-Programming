@@ -11,7 +11,7 @@ int main()
     string z;
     float x, y, A, H, R;
     //ofstream fin("4.txt");
-    //fin << "я ничего25    не 10понимаю 2599в плюсах!\n";
+    //fin << "1jhjkjjhjk2\n33jkhkjh hjkh hjkhkj44\n\n5 ^ &*^66 % $$ gj ^ &^&555\n\n7 8\n7 8\n\n900000!!";
     //fin.close();
     ifstream fout("4.txt");
     string fil, Textfile;

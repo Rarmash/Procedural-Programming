@@ -9,9 +9,9 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     ofstream fin("5.txt");
-    string QQQ;
-    cin >> QQQ;
-    fin << QQQ;
+    string stringg;
+    cin >> stringg;
+    fin << stringg;
     fin.close();
     ifstream fout("5.txt");
     string fil, Textfile;
@@ -23,7 +23,6 @@ int main()
     int size = 30, i = 0;
     size = fil.size();
     string strBefcurr;
-    //char *a = new char[size];
     char a[30];
     char temp;
     for (int i = 0; i < size; i++)
