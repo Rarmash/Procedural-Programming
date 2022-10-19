@@ -1,58 +1,31 @@
 #include <iostream>
-#include <Windows.h>
-#include <conio.h>
-#include <stdio.h>
+
 using namespace std;
 
-HANDLE hConsole;
+template <class T>
+void sign(T& a)
+{
+    if (a > 0)
+    {
+        a = 1;
+    }
+    if (a == 0)
+    {
+        a = 0;
+    }
+    if (a < 0)
+    {
+        a = -1;
+    }
+}
 
-int main() {
-	for (int i = 0; i < 13; i++) {
-		if (i == 0) {
-			for (int x = 0; x < 40; x++) {
-				if (x < 8) {
-					cout << "- ";
-				}
-				else {
-					cout << "-";
-				}
-			}
-			cout << endl;
-		}
-		else if (i % 2 == 0 && i > 0 && i < 7) {
-			for (int y = 0; y < 40; y++) {
-				if (y < 8) {
-					cout << "* ";
-				}
-				else {
-					cout << "-";
-				}
-			}
-			cout << endl;
-		}
-		else if (i % 2 == 1 && i > 0 && i < 6) {
-			for (int y = 0; y < 40; y++) {
-				if (y < 8) {
-					cout << "* ";
-				}
-				else {
-					cout << "-";
-				}
-			}
-			cout << endl;
-		}
-		else if (i % 2 == 1 && i > 6) {
-			for (int r = 0; r < 48; r++) {
-				cout << "-";
-			}
-			cout << endl;
-		}
-		else if (i % 2 == 0 && i > 6) {
-			for (int r = 0; r < 48; r++) {
-				cout << "-";
-			}
-			cout << endl;
-		}
-	}
-	
+int main()
+{
+    setlocale(LC_ALL, "RUS");
+    cout << "\t\t 2. Задача \"Знак Числа\" \n ";
+    cout << "\nВведите число и вы узнаете его знак. (0 - \"0\", 1 - \"+\", -1 - \"-\")" << endl;
+    double q;
+    cin >> q;
+    sign(q);
+    cout << q << endl;
 }
