@@ -24,18 +24,21 @@ int main()
     cout << "Выберите фигуру (введите число)" << endl << "1. Круг" << endl << "2. Прямоугольник" << endl << "3. Треугольник" << endl;
     cin >> n;
     if (n == 1) {
+        system("cls||clear");
         cout << "Введите радиус круга: ";
         double r;
         cin >> r;
         cout << "Ответ: " << krug(r);
     }
     else if (n == 2) {
+        system("cls||clear");
         cout << "Введите стороны A и B: ";
         double a, b;
         cin >> a >> b;
         cout << "Ответ: " << prya(a, b);
     }
     else if (n == 3) {
+        system("cls||clear");
         int k = 0;
         while (k == 0) {
             cout << "Введите три стороны треугольника: ";

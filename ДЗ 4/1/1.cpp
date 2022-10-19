@@ -1,25 +1,33 @@
 ﻿#include <iostream>
-#include <random>
 #include <fstream>
-#include <stdlib.h>
-#include <conio.h>
+
+
 using namespace std;
 
 int main()
 {
-    ofstream File("1.txt");
-    for (int i = 1; i <= 10; i++) {
-        File << rand() % 10;
+    setlocale(LC_ALL, "RUS");
+    cout << "\t\t 1. Задача \"Файл\" \n ";
+    ofstream fout;
+    fout.open("chisla.txt");
+    double l;
+    double p = 0;
+    cout << "Введите 10 чисел, сумму которых нужно найти. По очереди. \n\n";
+    for (int i = 0; i < 10; i++)
+    {
+        cin >> l;
+        fout << l << endl;
     }
-    File.close();
-    int sum = 0;
-    string i;
-    ifstream NewFile("1.txt");
-    string Line;
-    NewFile >> i;
-    for (int d = 0; d < 10; d++) {
-        sum = sum + i[d];
-        cout << d << "\t" << i[d] << "\t" << sum << endl;
+    fout.close();
+    double str;
+    ifstream fin;
+    fin.open("chisla.txt");
+    while (fin >> str)
+    {
+        p += str;
     }
-    cout << sum;
+    fin.close();
+    cout << "Сумма равна: " << p << endl;
+
+}
 }
