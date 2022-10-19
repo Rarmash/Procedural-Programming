@@ -1,31 +1,32 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 template <class T>
-void sign(T& a)
+string sign(T& a)
 {
+    string f;
     if (a > 0)
     {
-        a = 1;
+        f = "+";
     }
     if (a == 0)
     {
-        a = 0;
+        f = "Нейтрально";
     }
     if (a < 0)
     {
-        a = -1;
+        f = "-";
     }
+    return f;
 }
 
 int main()
 {
     setlocale(LC_ALL, "RUS");
-    cout << "\t\t 2. Задача \"Знак Числа\" \n ";
-    cout << "\nВведите число и вы узнаете его знак. (0 - \"0\", 1 - \"+\", -1 - \"-\")" << endl;
+    cout << "Введите число для определения его знака." << endl;
     double q;
     cin >> q;
-    sign(q);
-    cout << q << endl;
+    cout << sign(q) << endl;
 }
