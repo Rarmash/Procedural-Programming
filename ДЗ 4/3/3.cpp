@@ -21,23 +21,27 @@ int main()
     setlocale(0, "");
     system("cls||clear");
     int n;
-    cout << "Выберите фигуру (введите число)" << endl << "1. Круг" << endl << "2. Прямоугольник" << endl << "3. Треугольник" << endl;
+    cout << "Выберите фигуру (введите число)" << endl << "1. Круг" << endl << "2. Прямоугольник" << endl << "3. Треугольник" << endl << "Число: ";
     cin >> n;
-    if (n == 1) {
+    switch (n)
+    {
+    case 1: {
         system("cls||clear");
         cout << "Введите радиус круга: ";
         double r;
         cin >> r;
         cout << "Ответ: " << krug(r);
+        break;
     }
-    else if (n == 2) {
+    case 2: {
         system("cls||clear");
         cout << "Введите стороны A и B: ";
         double a, b;
         cin >> a >> b;
         cout << "Ответ: " << prya(a, b);
+        break;
     }
-    else if (n == 3) {
+    case 3: {
         system("cls||clear");
         int k = 0;
         while (k == 0) {
@@ -52,5 +56,7 @@ int main()
                 k = 1;
             }
         }
+        break;
+    }
     }
 }
