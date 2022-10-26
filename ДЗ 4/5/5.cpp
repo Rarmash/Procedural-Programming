@@ -13,6 +13,8 @@ int main(void)
     LineTo(hDC, 1000, 200);
     MoveToEx(hDC, 500, 0, NULL);
     LineTo(hDC, 500, 400);
+    Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
+    SelectObject(hDC, Pen);
     for (float x = -74.0f; x <= 75.0f; x += 0.01f) //начало и конец графика
     {
         MoveToEx(hDC, 10 * x + 250, -10 * sin(x) + 200, NULL); //начало отсчёта графика/растяжение по вертикали/координата по y
