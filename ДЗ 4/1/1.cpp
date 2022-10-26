@@ -7,7 +7,6 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "RUS");
-    cout << "\t\t 1. Задача \"Файл\" \n ";
     ofstream fout;
     fout.open("chisla.txt");
     double l;
@@ -28,6 +27,4 @@ int main()
     }
     fin.close();
     cout << "Сумма равна: " << p << endl;
-
-}
 }
