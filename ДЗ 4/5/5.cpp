@@ -2,11 +2,9 @@
 #include <stdlib.h>
 #include <math.h>
 #include <iostream>
+
 int main(void)
 {
-    char* str = "0000FF";
-    int r, g, b;
-    sscanf(str, "%02x%02x%02x", &r, &g, &b);
     HWND hWnd = GetConsoleWindow();
     HDC hDC = GetDC(hWnd);
     HPEN Pen = CreatePen(PS_SOLID, 2, RGB(255, 255, 255));
