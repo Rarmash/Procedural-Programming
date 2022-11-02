@@ -23,7 +23,7 @@ bool CheckExisting(string num)
 
 	if (std::find(errorNums.begin(), errorNums.end(), num) != errorNums.end())
 	{
-		cout << "Ошибка, данное число не существует!" << endl;
+		cout << "Данное римское число не существует!" << endl;
 		return false;
 	}
 
@@ -34,16 +34,32 @@ bool ToRimNumbers(string num, int arr[])
 {
 	for (int i = 0; i < num.length(); i++)
 	{
-		if (num[i] == 'I') arr[i] = 1;
-		else if (num[i] == 'V') arr[i] = 5;
-		else if (num[i] == 'X') arr[i] = 10;
-		else if (num[i] == 'L') arr[i] = 50;
-		else if (num[i] == 'C') arr[i] = 100;
-		else if (num[i] == 'D') arr[i] = 500;
-		else if (num[i] == 'M') arr[i] = 1000;
-		else
+		switch (num[i])
 		{
-			cout << "Ошибка! Вводить только римские цифры!" << endl;
+		case 'I':
+			arr[i] = 1;
+			break;
+		case 'V':
+			arr[i] = 5;
+			break;
+		case 'X':
+			arr[i] = 10;
+			break;
+		case 'L':
+			arr[i] = 50;
+			break;
+		case 'C':
+			arr[i] = 100;
+			break;
+		case 'D':
+			arr[i] = 500;
+			break;
+		case 'M':
+			arr[i] = 1000;
+			break;
+
+		default:
+			cout << "Нужно вводить ТОЛЬКО римские цифры!" << endl;
 			return false;
 		}
 	}
@@ -56,38 +72,32 @@ void main()
 	setlocale(0, "");
 	string rimNum;
 	int rimskNums[20]{};
-	cout << "Введите римские цифры: ";
+	cout << "Введите римское число: ";
 	cin >> rimNum;
 
 	if (!CheckTheThree(rimNum))
 	{
-		cout << "Ошибка, нельзя вводить число больше 3 раз!" << endl;
+		cout << "Нельзя вносить больше трёх цифр!" << endl;
 		return;
 	}
 	if (!CheckExisting(rimNum)) return;
 	if (!ToRimNumbers(rimNum, rimskNums)) return;
 
 	int sum = 0;
-	for (int k = 1; k <= rimNum.length(); k++)
+	for (int i = 0; i < rimNum.length(); i++)
 	{
-		if ((rimskNums[k] == rimskNums[k + 1]) && (rimskNums[k] == rimskNums[k - 1]))
+		if (rimskNums[i] == 0) {
+			cout << "Неправильный ввод";
+			return;
+		}
+		if (rimskNums[i] < rimskNums[i + 1])
 		{
-			sum = sum + 3 * rimskNums[k];
-			k = k + 2;
+			sum += rimskNums[i + 1] - rimskNums[i];
+			i++;
 			continue;
 		}
-
-		if ((rimskNums[k - 1] >= rimskNums[k]))
-		{
-			sum = sum + rimskNums[k - 1] + rimskNums[k];
-			k++;
-		}
-		else
-		{
-			sum = sum + abs(rimskNums[k - 1] - rimskNums[k]);
-			k++;
-		}
+		sum += rimskNums[i];
 	}
 
-	cout << "Число в арабской системе: " << sum << endl;
+	cout << "Число: " << sum << endl;
 }

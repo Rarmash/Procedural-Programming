@@ -18,9 +18,6 @@ void main()
 		}
 		cout << endl;
 	}
-
-	cout << endl;
-	cout << endl;
 	cout << "Введите матрицу B: " << endl;
 	for (int i = 0; i < 4; i++)
 	{
@@ -40,9 +37,6 @@ void main()
 			c[k][i] = a[k][0] * b[0][i] + a[k][1] * b[1][i] + a[k][2] * b[2][i] + a[k][3] * b[3][i];
 		}
 	}
-
-	cout << endl;
-	cout << endl;
 	cout << "Матрица С (A*B): " << endl;
 	for (int k = 0; k <= 2; k++)
 	{
@@ -52,19 +46,14 @@ void main()
 		}
 		cout << endl;
 	}
-
-	cout << endl;
-	cout << endl;
-	cout << endl;
-
 	double maxtrade = max(c[0][0], max(c[1][0], c[2][0]));
 	double mintrade = min(c[0][0], min(c[1][0], c[2][0]));
 	for (int i = 0; i < 3; i++)
 	{
 		if (maxtrade == c[i][0])
-			cout << "Продавец, который больше всего выручил с продажи - " << i + 1 << endl;
+			cout << "Продавец, который больше всего выручил с продажи: " << i + 1 << endl;
 		else if (mintrade == c[i][0])
-			cout << "Продавец, который меньше всего выручил с продажи - " << i + 1 << endl;
+			cout << "Продавец, который меньше всего выручил с продажи: " << i + 1 << endl;
 	}
 
 	cout << endl;
@@ -73,9 +62,9 @@ void main()
 	for (int i = 0; i < 3; i++)
 	{
 		if (maxcom == c[i][1])
-			cout << "Продавец с наибольшими комиссионными - " << i + 1 << endl;
+			cout << "Продавец с наибольшими комиссионными: " << i + 1 << endl;
 		else if (mincom == c[i][1])
-			cout << "Продавец с наименьшими комиссионными - " << i + 1 << endl;
+			cout << "Продавец с наименьшими комиссионными: " << i + 1 << endl;
 	}
 
 	cout << endl;
