@@ -14,6 +14,7 @@ int main() {
     int N;
     bool* mas;
 
+    cout << "Введите число: ";
     cin >> S;
     N = S + 1;
 
@@ -27,6 +28,7 @@ int main() {
                 if (mas[j]) mas[j] = false;
 
     int border = 99;
+    cout << "\nПростые числа: ";
     for (i = 2; i <= S; i++)
     {
         if (i > border)
