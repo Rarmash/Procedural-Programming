@@ -27,7 +27,7 @@ void task2()
 {
     int m, a = 0, b = 0;
     cout << "Введите количество лопастей, которое есть у Дениса: "; cin >> m;
-    int m_orig = m;
+    int m_orig = m; //дублируем переменную
     while (m >= 0) {
         if (m % 3 == 0)
         {
@@ -68,37 +68,37 @@ void task3()
     system("pause");
 }
 
-void task4() //UNSTABLE
+void task4()
 {
-    const unsigned int mesta = 54;
+    const int mesta = 54; //общее количество мест. Константа.
     vector<unsigned int> statuses; // Сколько свободно мест на купе
     map<unsigned int, unsigned int> nomera; // Место - Номер купе.
+    unsigned int nomer, n, resultat = 0, kupe = 0;
     for (unsigned int i = 0; i < mesta / 6; i++) {
         statuses.push_back(0);
-        for (unsigned int j : {4 * i + 1, 4 * i + 2, 4 * i + 3, 4 * i + 4, mesta - i * 2 - 1, mesta - i * 2}) {
-            nomera[j] = i;
+        for (unsigned int j: {4 * i + 1, 4 * i + 2, 4 * i + 3, 4 * i + 4, mesta - i * 2 - 1, mesta - i * 2}) {
+            nomera[j] = i; //наполнение массива номеров мест купе
         }
     }
-    unsigned int buffer, n, result = 0, now = 0;
-    cin >> n;
+    cout << "Введите количество свободных мест в вагоне: "; cin >> n;
     for (int i = 0; i < n; i++) {
-        cin >> buffer;
-        if (nomera.find(buffer) != nomera.end()) { // Проверка валидности ключа
-            statuses[nomera[buffer]] += 1;
-            nomera.erase(buffer);
+        cout << "Введите номер свободного места: "; cin >> nomer;
+        if (nomera.find(nomer) != nomera.end()) { // Проверка валидности номера
+            statuses[nomera[nomer]] += 1; //+ к свободному месту в опр. купе
+            nomera.erase(nomer); //убираем из общей базы номеров данное число
         }
     }
-    for (unsigned int i : statuses) {
+    for (unsigned int i : statuses) { //начинаем поиск подряд идущих свободных купе
         if (i == 6) {
-            now += 1;
-            if (now > result)
-                result = now;
+            kupe += 1;
+            if (kupe > resultat)
+                resultat = kupe;
         }
         else {
-            now = 0;
+            kupe = 0; //в случае, если данное купе не свободно полностью, обнуляем счётчик
         }
     }
-    cout << result << endl;
+    cout << "Максимальное количество идущих подряд свободных купе - " << resultat << endl;
     system("pause");
 }
 
