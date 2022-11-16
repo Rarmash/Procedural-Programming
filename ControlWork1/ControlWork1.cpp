@@ -73,7 +73,7 @@ void task4()
     const int mesta = 54; //общее количество мест. Константа.
     vector<unsigned int> statuses; // Сколько свободно мест на купе
     map<unsigned int, unsigned int> nomera; // Место - Номер купе.
-    unsigned int nomer, n, resultat = 0, kupe = 0;
+    int nomer, n, resultat = 0, kupe = 0;
     for (unsigned int i = 0; i < mesta / 6; i++) {
         statuses.push_back(0);
         for (unsigned int j: {4 * i + 1, 4 * i + 2, 4 * i + 3, 4 * i + 4, mesta - i * 2 - 1, mesta - i * 2}) {
@@ -81,24 +81,38 @@ void task4()
         }
     }
     cout << "Введите количество свободных мест в вагоне: "; cin >> n;
-    for (int i = 0; i < n; i++) {
-        cout << "Введите номер свободного места: "; cin >> nomer;
-        if (nomera.find(nomer) != nomera.end()) { // Проверка валидности номера
-            statuses[nomera[nomer]] += 1; //+ к свободному месту в опр. купе
-            nomera.erase(nomer); //убираем из общей базы номеров данное число
+    if (n > 0) {
+        for (int i = 0; i < n; i++) {
+            while (true) {
+                cout << "Введите номер свободного места: "; cin >> nomer;
+                if (nomer > 0) {
+                    if (nomera.find(nomer) != nomera.end()) { // Проверка валидности номера
+                        statuses[nomera[nomer]] += 1; //+ к свободному месту в опр. купе
+                        nomera.erase(nomer); //убираем из общей базы номеров данное число
+                    }
+                    break;
+                }
+                else {
+                    cout << "Числа должны быть ПОЛОЖИТЕЛЬНЫМИ! Уже запомнить бы надо, к 4 задаче..." << endl;
+                }
+            }
         }
+        for (int i : statuses) { //начинаем поиск подряд идущих свободных купе
+            if (i == 6) {
+                kupe += 1;
+                if (kupe > resultat)
+                    resultat = kupe;
+            }
+            else {
+                kupe = 0; //в случае, если данное купе не свободно полностью, обнуляем счётчик
+            }
+        }
+        cout << "Максимальное количество идущих подряд свободных купе - " << resultat << endl;
     }
-    for (unsigned int i : statuses) { //начинаем поиск подряд идущих свободных купе
-        if (i == 6) {
-            kupe += 1;
-            if (kupe > resultat)
-                resultat = kupe;
-        }
-        else {
-            kupe = 0; //в случае, если данное купе не свободно полностью, обнуляем счётчик
-        }
+    else {
+        cout << "Числа должны быть ПОЛОЖИТЕЛЬНЫМИ! Уже запомнить бы надо, к 4 задаче...";
     }
-    cout << "Максимальное количество идущих подряд свободных купе - " << resultat << endl;
+    cout << endl;
     system("pause");
 }
 
