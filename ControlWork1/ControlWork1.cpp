@@ -70,35 +70,36 @@ void task3()
 
 void task4() //UNSTABLE
 {
-    setlocale(0, "");
-    cout << "Введите кол-во свободных мест: ";
-    int n, pl;
-    int k[9]{};
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        cin >> pl;
-        if (((pl >= 1) and (pl <= 4)) or (pl == 53) or (pl == 54)) k[0]++;
-        else if (((pl >= 5) and (pl <= 8)) or (pl == 51) or (pl == 52)) k[1]++;
-        else if (((pl >= 9) and (pl <= 12)) or (pl == 49) or (pl == 50)) k[2]++;
-        else if (((pl >= 13) and (pl <= 16)) or (pl == 47) or (pl == 48)) k[3]++;
-        else if (((pl >= 17) and (pl <= 20)) or (pl == 45) or (pl == 46)) k[4]++;
-        else if (((pl >= 21) and (pl <= 24)) or (pl == 43) or (pl == 44)) k[5]++;
-        else if (((pl >= 25) and (pl <= 28)) or (pl == 41) or (pl == 42)) k[6]++;
-        else if (((pl >= 29) and (pl <= 32)) or (pl == 39) or (pl == 40)) k[7]++;
-        else if (((pl >= 33) and (pl <= 36)) or (pl == 37) or (pl == 38)) k[8]++;
-    }
-    int l = 0, max = 0;
-    for (int i = 0; i <= 8; i++)
-    {
-        if ((k[i] == 6) and (k[i + 1] == 6)) l++;
-        else
-        {
-            if (l > max) max = l;
-            l = 0;
+    const unsigned int mesta = 54;
+    vector<unsigned int> statuses; // Сколько свободно мест на купе
+    map<unsigned int, unsigned int> nomera; // Место - Номер купе.
+    for (unsigned int i = 0; i < mesta / 6; i++) {
+        statuses.push_back(0);
+        for (unsigned int j : {4 * i + 1, 4 * i + 2, 4 * i + 3, 4 * i + 4, mesta - i * 2 - 1, mesta - i * 2}) {
+            nomera[j] = i;
         }
     }
-    cout << max + 1;
+    unsigned int buffer, n, result = 0, now = 0;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cin >> buffer;
+        if (nomera.find(buffer) != nomera.end()) { // Проверка валидности ключа
+            statuses[nomera[buffer]] += 1;
+            nomera.erase(buffer);
+        }
+    }
+    for (unsigned int i : statuses) {
+        if (i == 6) {
+            now += 1;
+            if (now > result)
+                result = now;
+        }
+        else {
+            now = 0;
+        }
+    }
+    cout << result << endl;
+    system("pause");
 }
 
 void task5() {
