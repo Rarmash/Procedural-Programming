@@ -26,30 +26,33 @@ void task1()
 
 void task2()
 {
-    int m;
-    std::cin >> m;
-    int s4 = 0, s3 = 0;
-    int k = m % 4;
-    if (k == 0) {
-        if (m > 12) {
-            s3 = 4;
-            s4 = m / 4 - 3;
+    int m, a = 0, b = 0;
+    cout << "Введите количество лопастей, которое есть у Дениса: "; cin >> m;
+    int m1 = m;
+    while (m >= 0) {
+        if (m % 3 == 0)
+        {
+            a = a + (m / 3);
+            break;
         }
-        else {
-            s4 = m / 4;
+        if (m % 4 == 0)
+        {
+            b = b + (m / 4);
+            break;
         }
-
+        if (m % 3 == 1 || m % 3 == 2)
+        {
+            m = m - 4; b++;
+        }
     }
-    else {
-        s3 = m / 3;
-        s4 = m / 4;
-        if ((m % 2) > (m % 4))
-            s3 = 0;
-        else
-            s4 = 0;
-
+    if ((3 * a + 4 * b) != m1)
+    {
+        cout << "0 спиннеров с 3 лопастями\n0 спиннеров с 4 лопастями\nНевозможно произвести спиннеры так, чтобы суммарное число лопастей было равно " << m1;
     }
-    std::cout << s3 << std::endl << s4 << std::endl;
+    else
+    {
+        cout << a << " спиннеров с 3 лопастями" << endl << b << " спиннеров с 4 лопастями";
+    }
     cout << endl;
     system("pause");
 }
@@ -68,9 +71,9 @@ void task3()
     system("pause");
 }
 
-/*
 void task4()
 {
+    /*
     const unsigned int PLACES_COUNT = 54;
 
     vector<unsigned int> statuses; // Сколько свободно мест (от 0 до 6, 6 - купе свободно)
@@ -118,28 +121,40 @@ void task4()
         }
         cout << result << std::endl;
     }
-}*/
+    */
+    cout << "4.";
+}
+
+void task5() {
+    cout << "5.";
+}
 
 int main() {
     while (true) {
         system("cls||clear");
         setlocale(LC_ALL, "");
         int num;
-        cout << "Введите номер задания (1-5): ";
+        cout << "Введите номер задания (1-5 / 9 для выхода): ";
         cin >> num;
+        system("cls||clear");
         switch (num) {
         case 1:
-            system("cls||clear");
             task1();
             break;
         case 2:
-            system("cls||clear");
             task2();
             break;
         case 3:
-            system("cls||clear");
             task3();
             break;
+        case 4:
+            task4();
+            break;
+        case 5:
+            task5();
+            break;
+        case 9:
+            exit(0);
         }
     }
 }
