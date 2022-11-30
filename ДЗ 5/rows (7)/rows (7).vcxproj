@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{9cace3d1-7de8-4660-8d7e-62782990d316}</ProjectGuid>
-    <RootNamespace>My334</RootNamespace>
+    <ProjectGuid>{47f262d4-0440-4c71-aba3-713b2f79fda2}</ProjectGuid>
+    <RootNamespace>rows7</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,7 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="3 (34).cpp" />
+    <ClCompile Include="rows (7).cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
