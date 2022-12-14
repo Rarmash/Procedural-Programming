@@ -16,7 +16,10 @@ int main() {
 	for (int i = m; i <= n; i++) {
 		for (int j = m; j <= n; j++) {
 			for (int k = m; k <= n; k++) {
-				if (i * i + j * j == k * k) { cout << "{" << i << ";" << j << ";" << k << "}" << endl; }
+				if (i * i + j * j == k * k && i < j) 
+				{ 
+					cout << "{" << i << ";" << j << ";" << k << "}" << endl; 
+				}
 			}
 		}
 	}
