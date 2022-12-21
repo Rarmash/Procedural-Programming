@@ -68,10 +68,11 @@ bool Searching(int* balls, int countBalls)
 
 int main()
 {
+    setlocale(LC_ALL, "Russian");
     // Изначальная комбинация уже входит в счетчик
     int count = 1;
     int countBalls;
-    cout << "Input number of balls: "; cin >> countBalls;
+    cout << "Введите число шариков: "; cin >> countBalls;
     int* balls = new int[countBalls];
 
     // Заполняем массив с шариками
@@ -90,6 +91,6 @@ int main()
         }
     }
 
-    cout << "Number of good situations: " << count << endl;
+    cout << "Количество подходящих ситуаций: " << count << endl;
     return 0;
 }
