@@ -2,52 +2,94 @@
 
 using namespace std;
 
-bool printing(int* shar, int n)
+// Проверка на правильную комбинацию
+bool Checking(int* balls, int countBalls)
 {
-    for (int i = 0; i < n; ++i)
+    for (int i = 0; i < countBalls; ++i)
     {
-        if (shar[i] == (i + 1)) return true;
+        // Если хотя бы одно число сходится с номером в массиве, то комбинация подходит
+        if (balls[i] == (i + 1))
+        {
+            return true;
+        }
     }
     return false;
 }
 
-void swap(int* a, int i, int j)
+// Перестановка
+void Swap(int* balls, int firstIndex, int secondIndex)
 {
-    int s = a[i];
-    a[i] = a[j];
-    a[j] = s;
+    int buffer = balls[firstIndex];
+    balls[firstIndex] = balls[secondIndex];
+    balls[secondIndex] = buffer;
 }
 
-bool switching(int* a, int n)
+bool Searching(int* balls, int countBalls)
 {
-    int j = n - 2;
-    while (j != -1 && a[j] >= a[j + 1])
-        j--;
-    if (j == -1)
+    // минус 2, т.к 2 последних будут менятся между собой
+    int firstIndex = countBalls - 2;
+    // Нужно для определения смены определенного(старшего) разряда по прошлой комбинации,
+    // Т.е после 123 и 132 больше комбинацей с 1 нет, значит меняем её с двойкой и т.д
+    // 231 и 213 -> в 321 и 312
+    // Если firstIndex == -1, то это была последняя комбинация, тк 123 -> 321
+    while (firstIndex != -1 && balls[firstIndex] >= balls[firstIndex + 1])
+    {
+        firstIndex--;
+    }
+
+    // Если мы достигли последней комбинации, пройдя все комбинации, то больше комбинаций нет
+    if (firstIndex == -1)
+    {
         return false;
-    int k = n - 1;
-    while (a[j] >= a[k]) k--;
-    swap(a, j, k);
-    int l = j + 1, r = n - 1;
-    while (l < r)
-        swap(a, l++, r--);
+    }
+
+    int secondIndex = countBalls - 1;
+    // Нужно для замены на следующее число, т.е 123 -> 231 -> 321, при firstIndex = 0
+    while (balls[firstIndex] >= balls[secondIndex])
+    {
+        secondIndex--;
+    }
+
+    // Генерируем новую комбинацию
+    Swap(balls, firstIndex, secondIndex);
+    // Переменные для смен остальных разрядов комбинации, так 1234 -> 1243 -> 1324 -> 1342 и т.д 
+    int dopFirst = firstIndex + 1;
+    int dopSecond = countBalls - 1;
+
+    // Если еще не менялись отсальные разряды, то меняем их
+    while (dopFirst < dopSecond)
+    {
+        // Меняем на следющую комбинацию, в конце приходим к исходной
+        // Т.е 321 -> 312 -> 321 (сначала все, а потом к исходной)
+        Swap(balls, dopFirst++, dopSecond--);
+    }
     return true;
 }
 
 int main()
 {
-    setlocale(LC_ALL, "RUS");
-    int ans = 1, n;
-    cout << "Введите количество шариков: ";
-    cin >> n;
-    int* shar = new int[n];
-    for (int i = 1; i < (n + 1); i++) {
-        shar[i - 1] = i;
+    // Изначальная комбинация уже входит в счетчик
+    int count = 1;
+    int countBalls;
+    cout << "Input number of balls: "; cin >> countBalls;
+    int* balls = new int[countBalls];
+
+    // Заполняем массив с шариками
+    for (int i = 1; i < (countBalls + 1); i++)
+    {
+        balls[i - 1] = i;
     }
-    while (switching(shar, n)) {
-        if (printing(shar, n))
-            ans++;
+
+    // Пока находит
+    while (Searching(balls, countBalls))
+    {
+        // Проверка на правильную комбинацию
+        if (Checking(balls, countBalls))
+        {
+            count++;
+        }
     }
-    cout << "Ответ: " << ans << endl;
+
+    cout << "Number of good situations: " << count << endl;
     return 0;
 }
